@@ -6,7 +6,7 @@ export function zoomView(view,factor,point,{min=85,max=900}={}){
 }
 export function installPageZoomGuard(doc=document){
  for(const type of ['gesturestart','gesturechange','gestureend'])doc.addEventListener(type,e=>e.preventDefault(),{passive:false});
- doc.addEventListener('touchmove',e=>{if(e.touches.length>1&&!e.target.closest('#map-viewport'))e.preventDefault();},{passive:false});
- doc.addEventListener('wheel',e=>{if((e.ctrlKey||e.metaKey)&&!e.target.closest('#map-viewport'))e.preventDefault();},{passive:false});
+ doc.addEventListener('touchmove',e=>{if(e.touches.length>1&&!e.target.closest('#map-viewport, [data-map-viewport]'))e.preventDefault();},{passive:false});
+ doc.addEventListener('wheel',e=>{if((e.ctrlKey||e.metaKey)&&!e.target.closest('#map-viewport, [data-map-viewport]'))e.preventDefault();},{passive:false});
  doc.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['+','=','-','0'].includes(e.key))e.preventDefault();});
 }

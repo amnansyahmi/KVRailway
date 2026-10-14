@@ -1,6 +1,6 @@
 # KV Railway
 
-An independent, installable Klang Valley journey planner. Mobile-first, offline-ready and built without a runtime dependency or paid API.
+An independent, installable Klang Valley journey planner and Malaysia rail corridor explorer. Mobile-first, offline-ready and built without a runtime dependency or paid API.
 
 ## Features
 
@@ -19,6 +19,12 @@ An independent, installable Klang Valley journey planner. Mobile-first, offline-
 - Save journeys on the device and share instructions and a reproducible journey link.
 - Standalone PWA with PNG install icons and versioned offline app caching.
 - Planned lines/stations and suspended Skypark Link visible as optional reference overlays, excluded from routing.
+
+- Switch between the original Klang Valley schematic and a static geographic Malaysia map.
+- Explore 44 ETS corridor stations from Padang Besar / Butterworth to JB Sentral, with timetable and KITS links. Stops depend on the selected train.
+- Preview 20 planned ECRL passenger stations, with January 2027 / January 2028 phase targets clearly separated from operating services.
+- National station sheets, animated previews, optional 3D tilt, device-local saved corridors and shareable links.
+- Bundled Natural Earth basemap, with an explicitly smaller Sabah/Sarawak context inset; no map API, live tiles or map token required.
 
 ## Run and deploy
 
@@ -44,6 +50,10 @@ Times are heuristic estimates of riding and transferring. They **exclude waiting
 
 Walking links may require leaving ticket gates. Confirm current schedules and station access with Rapid KL, KTMB and ERL before travelling. Planned and suspended availability is a snapshot and requires maintenance.
 
+National routes are illustrative geographic corridors, not surveyed rail geometry or confirmed bookable itineraries. ECRL is available only through explicit preview exploration and never joins operating routing. National parking/facilities are unknown unless a linked Klang Valley station has an existing source-backed record. Opening targets and timetable availability are snapshots, not live feeds.
+
+The bundled map uses Natural Earth public-domain country outlines. To regenerate after downloading `ne_50m_admin_0_countries.geojson`, run `python scripts/build-malaysia-map.py /path/to/ne_50m_admin_0_countries.geojson`. Its projection must stay aligned with `geoPoint` in `src/national-data.js`.
+
 ## Structure
 
 | File | Responsibility |
@@ -56,6 +66,10 @@ Walking links may require leaving ticket gates. Confirm current schedules and st
 | `src/reference.js` | PDF line shapes, station coordinates and colour palette |
 | `src/router.js` | Service-aware shortest path, transfer counting and boarding direction |
 | `src/app.js` | Search, interactive map, animation, sharing and device-local saved journeys |
+| `src/national-data.js` | ETS/ECRL stations, phase targets, approximate geographic positions and official sources |
+| `src/national-router.js` | Separate corridor exploration, explicit planned previews and animation geometry |
+| `src/national-app.js` | National UI, map gestures, station sheets, saving and sharing |
+| `public/maps/malaysia.svg` | Bundled Natural Earth 50m Malaysia basemap |
 | `src/style.css` | Responsive desktop/mobile design, CSS 3D view and reduced motion |
 | `public/sw.js` | Versioned offline shell cache; populated during build |
 | `scripts/build.mjs` | Deterministic static build and cache-version hash |
@@ -63,4 +77,4 @@ Walking links may require leaving ticket gates. Confirm current schedules and st
 
 ## Validation
 
-34 automated checks cover known journeys, reverse direction, planned/suspended exclusions, airport preferences, interchange walks, transfer minimisation, connectivity to every available station and offline navigation. Interactive browser/device QA was not available in the build environment; physical iPhone/Android install and touch behavior still need checking.
+41 automated checks cover known journeys, reverse direction, planned/suspended exclusions, airport preferences, interchange walks, transfer minimisation, connectivity to every available station and offline navigation, plus national branch continuity, all endpoint combinations, southern ETS stations, ECRL phase/exclusion behavior and offline map caching. Interactive browser/device QA was not available in the build environment; physical iPhone/Android install and touch behavior still need checking.

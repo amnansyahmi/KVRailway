@@ -1,3 +1,4 @@
+import {mountNational} from './national-app.js';
 import {createPlayback,mapIsVisible} from './playback.js';
 import {fullNetworkView,referencePaths} from './reference.js';
 import {legPath,geometryForRoute,positionAlongRoute} from './geometry.js';
@@ -44,7 +45,7 @@ document.querySelectorAll('[data-pref]').forEach(b=>b.addEventListener('click',(
 $('airport').addEventListener('change',()=>{state.allowAirport=$('airport').checked;if(state.from&&state.to)plan();});
 $('route-form').addEventListener('submit',e=>{e.preventDefault();plan({revealMap:true});});
 function setTab(tab){document.querySelector('.app-shell').dataset.tab=tab;document.querySelectorAll('[data-tab]').forEach(b=>{if(!b.matches('button'))return;const active=b.dataset.tab===tab;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});$('saved-panel').hidden=tab!=='saved';if(tab==='saved')renderSaved();if(matchMedia('(max-width:760px)').matches)window.scrollTo({top:0,behavior:reduceMotion.matches?'instant':'smooth'});
- schedulePlaybackVisibility();if(tab==='map'&&state.route?.edges.length&&playback.state.complete&&!reduceMotion.matches)playback.play({restart:true});}
+ window.dispatchEvent(new CustomEvent('kv:navigation',{detail:{tab}}));schedulePlaybackVisibility();if(tab==='map'&&state.route?.edges.length&&playback.state.complete&&!reduceMotion.matches)playback.play({restart:true});}
 document.querySelectorAll('.mobile-nav button').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
 function showError(message){$('form-error').textContent=message;$('form-error').hidden=false;}
 function plan({focus=true,announce=false,revealMap=false}={}){
@@ -152,4 +153,5 @@ let offlineReady=false;function connection(){const t=$('connection').querySelect
 window.addEventListener('online',connection);window.addEventListener('offline',connection);
 if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js').then(reg=>{navigator.serviceWorker.ready.then(()=>{offlineReady=true;connection();});reg.addEventListener('updatefound',()=>{const worker=reg.installing;worker?.addEventListener('statechange',()=>{if(worker.state==='installed'&&navigator.serviceWorker.controller)toast('A new version is ready. Close and reopen the app to update.');});});}).catch(()=>{connection();});}
 const params=new URLSearchParams(location.search);for(const f of ['from','to']){const id=params.get(f);if(id&&stationById[id]?.status==='available')state[f]=id;}if(params.get('mode')==='transfers')state.preference='transfers';if(params.get('airport')==='true')state.allowAirport=true;
-updateFields();setTab('plan');plan();connection();
+updateFields();setTab('plan');if(params.get('scope')!=='malaysia')plan();connection();
+mountNational({setTab,onCity:()=>plan({focus:false}),openCity:id=>{setStation('from',id);setTab('plan');plan();showStation(id);},toast,initialParams:params});

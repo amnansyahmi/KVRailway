@@ -48,3 +48,16 @@ Recheck operator sources before changing service availability. Add a targeted ro
 - MRT Corp's operating Kajang station list omits the reserved Bukit Kiara Selatan station. KG12 is now planned and excluded from routing; Phileo Damansara connects directly to Pusat Bandar Damansara. Current available-station count is 218.
 
 Detailed parking sources are stored with each record in `src/parking-data.js`, including Kwasa Sentral, Bandar Utama, Pusat Bandar Damansara, Kajang, Sri Damansara Barat, Jinjang, Serdang Raya Utara, Taman Naga Emas, Taman Equine, UPM and Bukit Dukung. General MRT parking information: https://www.mymrt.com.my/projects/travel-with-mrt/park-n-ride/ .
+
+
+## Malaysia rail expansion
+
+Checked 14 October 2026. This mode is a separate corridor explorer; it does not extend the city shortest-path graph or assert direct train availability.
+
+- KTMB timetable page: https://www.ktmb.com.my/TrainTime.html . ETS timetable effective 1 June 2026: https://www.ktmb.com.my/assets/pdf/2026/Jadual%20Tren%20ETS%201%20Jun%202026.pdf . Both directions were read; 44 corridor stations include Batang Melaka, the southern stops through Johor and JB Sentral. Behrang and Kuala Kubu Bharu are not present and are excluded from ETS choices.
+- Butterworth is a branch off Bukit Mertajam. A preview to/from stations north of that junction explicitly asks users to check connecting services; it does not manufacture a direct ETS train. Express, Platinum, Gold and Silver patterns can skip intermediate corridor stations. No departure, fare, travel duration or seat data is invented. KITS: https://online.ktmb.com.my/ .
+- Fleet onboard amenities: https://www.ktmb.com.my/Onboard.html . These are train amenities, not station facility or parking claims.
+- Current MRL project: https://www.mrl.com.my/east-coast-rail-link . Published alignment reference: https://www.mrl.com.my/wp-content/uploads/2023/05/ECRL-Alignment-1552023.pdf . The preview contains 20 passenger station areas; Northport and Westports freight locations are excluded. It uses the Gombak / Serendah / Puncak Alam / Kapar alignment, not superseded Nilai / Putrajaya plans.
+- MRL announcement dated 13 August 2026: https://www.mrl.com.my/announcement/fdc8e46ac0lwdnbmsjjtwmag . Target passenger operation January 2027 for Kota Bharu–Gombak, January 2028 for Gombak–Port Klang. These are targets, not guaranteed opening dates. All ECRL stations remain planned and require explicit preview mode.
+- Country outlines: Natural Earth 50m admin-0 countries, from https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_50m_admin_0_countries.geojson . Public-domain reuse terms: https://www.naturalearthdata.com/about/terms-of-use/ . The app bundles a static SVG; it fetches no live tiles. Peninsular map uses an equirectangular projection; East Malaysia is a labelled smaller context inset.
+- National station positions are approximate town/station areas. Overlay segments illustrate corridor order and do not represent surveyed tracks. External Maps links use a named station search, not approximate coordinates as entrance or parking pins. New national parking records are not inferred. Existing source-backed Klang Valley station details remain accessible for matching operating ETS station names.

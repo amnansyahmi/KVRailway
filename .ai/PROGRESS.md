@@ -27,10 +27,20 @@
 - Reduce Motion blocks automatic playback but explicit Play/Replay and a static, user-selected 3D view remain available.
 - Coarse-pointer rendering avoids animated SVG blur/shadow filters and uses a composited map plane.
 
+## Malaysia rail upgrade
+
+- Added a second network scope with 44 ETS corridor stations and 20 planned ECRL passenger stations.
+- Added a bundled Natural Earth 50m static Malaysia SVG, interactive geographic overlays, map-only zoom, station sheets, animated corridor playback, manual reduced-motion playback and optional 3D tilt.
+- Added ETS timetable / KITS / onboard sources; ECRL phase targets and planned status remain visible.
+- Butterworth branch changes are disclosed; no invented direct service, fare, departure, seat or duration.
+- National saved/shareable corridors are separate from city saved journeys. Linked ETS station details open the existing Klang Valley facilities/parking explorer.
+- Added national continuity / reverse / branch / phase / operating exclusion / geographic projection / offline cache tests.
+- Inspected the rendered static geographic basemap and station overlays. This is artwork verification, not browser/device QA.
+
 ## Verified
 
 - JavaScript syntax checks and static build.
-- 34 automated checks for known journeys, directions, transfer counts, exclusions, connectivity to every available station, manifest/icon validity and offline navigation fallback.
+- 41 automated checks for known journeys, directions, transfer counts, exclusions, connectivity to every available station, manifest/icon validity and offline navigation fallback.
 
 ## Verification limit
 
