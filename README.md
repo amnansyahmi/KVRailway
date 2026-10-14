@@ -9,7 +9,8 @@ An independent, installable Klang Valley journey planner. Mobile-first, offline-
 - Clear boarding instructions, train directions, stops and explicit walking links.
 - Interactive SVG network: pan, pinch, zoom, focus a line or journey, and choose stations on the map.
 - Animated route reveal and train preview with pause/replay; optional CSS 3D map tilt.
-- Reduced-motion support, keyboard station search, accessible controls, safe-area-aware mobile navigation.
+- Visible-map playback: phone route submissions open Network, off-screen time is paused and completed previews can replay when returning to Network.
+- Reduced-motion support with deliberate Play/Replay still available, keyboard station search, accessible controls, safe-area-aware mobile navigation.
 - Page zoom locked, while map pinch, wheel and zoom controls change only the SVG map.
 - Station explorer with 44 station-specific MRT facility profiles, explicit connecting walks and Maps search links.
 - Parking markers and a searchable explorer covering 116 operating stations, including 31 operator-supported Park & Ride records.
@@ -62,4 +63,4 @@ Walking links may require leaving ticket gates. Confirm current schedules and st
 
 ## Validation
 
-27 automated checks cover known journeys, reverse direction, planned/suspended exclusions, airport preferences, interchange walks, transfer minimisation, connectivity to every available station and offline navigation. Interactive browser/device QA was not available in the build environment; physical iPhone/Android install and touch behavior still need checking.
+34 automated checks cover known journeys, reverse direction, planned/suspended exclusions, airport preferences, interchange walks, transfer minimisation, connectivity to every available station and offline navigation. Interactive browser/device QA was not available in the build environment; physical iPhone/Android install and touch behavior still need checking.

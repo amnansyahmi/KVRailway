@@ -18,10 +18,19 @@
 - Parking choices along the departure line can become journey starting stations.
 - Corrected planned KG12 Bukit Kiara Selatan and the unavailable Maluri at-grade car park.
 
+## Mobile playback fix
+
+- Found autoplay running while the mobile map was below the long journey/parking section; Network tab did not restart a completed preview.
+- Playback now advances only while the map is visible, pauses on hidden pages/modals, and resumes without counting time off screen.
+- Submitting a route on mobile opens Network; opening Network can replay a completed journey.
+- Explicit Pause remains paused when scrolling away and back.
+- Reduce Motion blocks automatic playback but explicit Play/Replay and a static, user-selected 3D view remain available.
+- Coarse-pointer rendering avoids animated SVG blur/shadow filters and uses a composited map plane.
+
 ## Verified
 
 - JavaScript syntax checks and static build.
-- 27 automated checks for known journeys, directions, transfer counts, exclusions, connectivity to every available station, manifest/icon validity and offline navigation fallback.
+- 34 automated checks for known journeys, directions, transfer counts, exclusions, connectivity to every available station, manifest/icon validity and offline navigation fallback.
 
 ## Verification limit
 
