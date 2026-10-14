@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f7f5"><meta name="description" content="Find your way across Klang Valley. Plan rail journeys, follow animated routes, and keep your network map offline.">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="stylesheet" href="/src/style.css"><title>KV Railway — Your city, connected.</title>
+</head>
+<body>
+<div class="app-shell">
+ <header class="topbar"><a class="brand" href="/" aria-label="KV Railway home"><img src="/icon.svg" width="38" height="38" alt=""><span>KV<span class="brand-light">Railway</span><small>KLANG VALLEY, MALAYSIA</small></span></a><div class="top-actions"><span class="offline-pill" id="connection"><i></i><span>Offline-ready planner</span></span><button class="icon-button" id="about-button" aria-label="About the network"></button><button class="install-button" id="install-button" hidden>Install app</button></div></header>
+ <main class="workspace">
+  <aside class="planner" id="planner"><div class="eyebrow">A BETTER WAY THROUGH THE CITY</div><h1>Your city.<br><span>Connected.</span></h1><p class="intro">Less guessing. More getting there.<br>Find your way across Klang Valley.</p>
+   <form id="route-form" class="route-form">
+    <div class="station-fields"><div class="connector-line"></div>
+     <label class="station-field"><span class="field-dot from-dot"></span><span class="field-body"><span class="field-label">FROM</span><input id="from-input" role="combobox" aria-autocomplete="list" aria-controls="from-options" aria-expanded="false" autocomplete="off" placeholder="Choose a departure" value="Subang Jaya" required><span id="from-code" class="field-code"></span></span></label><div class="suggestions" id="from-options" role="listbox" hidden></div>
+     <button class="swap-button" type="button" id="swap" aria-label="Swap departure and destination"></button>
+     <label class="station-field"><span class="field-dot to-dot"></span><span class="field-body"><span class="field-label">TO</span><input id="to-input" role="combobox" aria-autocomplete="list" aria-controls="to-options" aria-expanded="false" autocomplete="off" placeholder="Choose a destination" value="KLCC" required><span id="to-code" class="field-code"></span></span></label><div class="suggestions" id="to-options" role="listbox" hidden></div>
+    </div>
+    <div class="preference" aria-label="Route preference"><button type="button" data-pref="fastest" class="selected" aria-pressed="true">Estimated fastest</button><button type="button" data-pref="transfers" aria-pressed="false">Fewer transfers</button></div>
+    <label class="check-row"><input type="checkbox" id="airport"><span>Include KLIA airport trains</span><span class="small-tag">Separate fares</span></label>
+    <button class="plan-button" type="submit"><span>Find my route</span><span id="plan-arrow"></span></button><p id="form-error" class="form-error" role="alert" hidden></p>
+   </form>
+   <section class="result" id="result" aria-live="polite"></section>
+   <section class="saved-panel" id="saved-panel" hidden><div class="section-heading"><h2>Your saved journeys</h2><span id="saved-count"></span></div><div id="saved-list"></div></section>
+   <div class="planner-foot"><span class="tiny-train" id="foot-icon"></span><p>One network. A thousand possibilities.<small>Independent planner · no account needed</small></p></div>
+  </aside>
+  <section class="map-panel" aria-label="Interactive Klang Valley network map">
+   <div class="map-heading"><div><div class="eyebrow">EXPLORE THE NETWORK</div><h2>A different view of your everyday.</h2></div><button id="dimension" class="view-toggle" aria-pressed="false"><span id="cube-icon"></span>3D view</button></div>
+   <div class="map-viewport" id="map-viewport"><div class="map-grid"></div><div id="map-plane" class="map-plane"><svg id="network-map" viewBox="40 90 540 580" aria-label="Rail network. Select a station to plan a journey." role="group"><defs><filter id="route-glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.8"/></filter><filter id="marker-shadow"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity=".2"/></filter></defs><g id="line-layer"></g><g id="walk-layer"></g><g id="route-layer"></g><g id="station-layer"></g><g id="label-layer"></g><g id="train-marker" hidden></g></svg></div>
+    <div class="map-watermark">KLANG<br>VALLEY<span>RAIL NETWORK / 2026</span></div>
+    <div class="map-controls"><button id="zoom-in" aria-label="Zoom in"></button><button id="zoom-out" aria-label="Zoom out"></button><span></span><button id="fit" aria-label="Fit complete network"></button><button id="focus-route" aria-label="Focus on selected journey"></button></div>
+    <div class="station-popover" id="station-popover" hidden></div>
+    <div class="map-caption"><span><i class="map-key"></i>Interchange</span><span>Drag to explore · + / − to zoom</span></div>
+   </div>
+   <div class="playback-bar" id="playback-bar"><button class="play-button" id="play" aria-label="Play journey animation"></button><div class="playback-copy"><strong id="playback-title">A little journey preview</strong><span id="playback-subtitle">Follow your route through the city</span></div><div class="playback-track"><div id="playback-progress"></div></div><button id="replay" class="icon-button" aria-label="Restart journey preview"></button></div>
+   <div class="network-footer"><div class="legend" id="legend"></div><label class="future-switch"><input type="checkbox" id="future"><span>Show planned & suspended</span></label></div>
+   <div class="map-source">Schematic, not to scale. Network reference: @ziqtofu · <button id="source-button">Data & credits</button><span id="network-count"></span></div>
+  </section>
+ </main>
+ <nav class="mobile-nav" aria-label="App navigation"><button data-tab="plan" class="active" aria-current="page"><span id="nav-plan"></span>Plan</button><button data-tab="map"><span id="nav-map"></span>Network</button><button data-tab="saved"><span id="nav-save"></span>Saved</button></nav>
+</div>
+<div id="toast" role="status" class="toast" hidden></div>
+<dialog id="about"><div class="dialog-head"><span class="eyebrow">GOOD TO KNOW</span><button id="close-about" class="icon-button" aria-label="Close information"></button></div><h2>Built for the way<br>you move.</h2><p>KV Railway is an independent, offline-ready route planner for Klang Valley. The network layout is based on the map designed by <strong>@ziqtofu</strong>, with service availability checked against operator sources on 14 October 2026.</p><h3>A route, not a timetable</h3><p>Journey times are estimates of time on trains and transfers. They exclude waiting, delays and operating hours. The moving train is a route preview, not a live vehicle. Check your operator before travelling, especially for KTM connections.</p><h3>What’s included</h3><p>12 available lines, including Shah Alam Line. Planned stations and MRT3 Circle Line are reference only. Skypark Link is suspended. Walking connections may require leaving ticket gates; ERL, KTM and BRT can need separate tickets.</p><h3>Keep it on your phone</h3><p>On iPhone: Safari → Share → Add to Home Screen. On Android: use Install app or your browser’s install menu. After the first complete load, the map and planner work offline. Saved journeys stay on this device.</p><div class="source-links"><a href="https://myrapid.com.my/bus-train/rapid-kl/" target="_blank" rel="noopener">Rapid KL ↗</a><a href="https://www.ktmb.com.my/" target="_blank" rel="noopener">KTMB ↗</a><a href="https://www.kliaekspres.com/" target="_blank" rel="noopener">KLIA Ekspres ↗</a><a href="https://www.mymrt.com.my/projects/mrt3-circle-line/" target="_blank" rel="noopener">MRT Corp ↗</a></div><p class="fine-print">This app is not affiliated with the operators or the map designer. No live service status or fare calculation is provided.</p></dialog>
+<script type="module" src="/src/app.js"></script>
+</body></html>
