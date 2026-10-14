@@ -1,4 +1,17 @@
 const paths={
+ parking:'<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M10 17V7h4a3 3 0 0 1 0 6h-4"/>',
+ search:'<circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/>',
+ external:'<path d="M13 3h8v8m0-8L10 14M10 3H3v18h18v-7"/>',
+ lift:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 15V9m-2 2 2-2 2 2m6-2v6m-2-2 2 2 2-2"/>',
+ steps:'<path d="M3 21h6v-6h6V9h6V3M3 3h6m-6 0v6m0-6 8 8"/>',
+ toilet:'<circle cx="7" cy="4" r="1.5"/><circle cx="17" cy="4" r="1.5"/><path d="M5 21V10H3m6 0v11m0-6H5M15 8h4l2 8h-8l2-8m1 8v5m2-5v5"/>',
+ surau:'<path d="M3 21h18M5 21v-9h14v9M12 5c-3 2-5 4-5 7h10c0-3-2-5-5-7zm0 0V2m-2 19v-5h4v5"/>',
+ ticket:'<path d="M3 6h18v4a2 2 0 0 0 0 4v4H3v-4a2 2 0 0 0 0-4zM15 6v12"/>',
+ accessible:'<circle cx="13" cy="3" r="1.5"/><path d="m12 6-1 7h6l3 6M12 9h6M9 10a6 6 0 1 0 7 9"/>',
+ bus:'<rect x="4" y="3" width="16" height="17" rx="3"/><path d="M4 12h16m-12 5h.01m8 0h.01M7 20v2m10-2v2M8 6h8"/>',
+ airplane:'<path d="m21 3-6 18-3-8-9-3zM12 13l9-10"/>',
+ bicycle:'<circle cx="5" cy="16" r="4"/><circle cx="19" cy="16" r="4"/><path d="m5 16 5-9 5 9H5m10 0 3-12h-4M8 5h4"/>',
+
  arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',swap:'<path d="M8 4v16m-4-4 4 4 4-4m4 4V4m-4 4 4-4 4 4"/>',
  train:'<rect x="6" y="3" width="12" height="15" rx="4"/><path d="M6 10h12m-8 8-2 3m6-3 2 3"/><path d="M9 14h.01M15 14h.01"/>',
  cube:'<path d="m12 2 9 5v10l-9 5-9-5V7zM3 7l9 5 9-5M12 12v10m-5-18 10 6"/>',

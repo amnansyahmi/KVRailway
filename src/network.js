@@ -1,3 +1,4 @@
+import {referencePoints,referenceColors} from './reference.js';
 // Schematic alignment transcribed from @ziqtofu's October 2026 reference.
 // Coordinates describe a diagram, not geographic locations. See DATA_SOURCES.md.
 export const DATA_DATE = '14 October 2026';
@@ -105,7 +106,7 @@ KG08|Mutiara Damansara|164,289
 KG09|Bandar Utama (MRT)|178,303
 KG10|TTDI|184,319
 KG11|Phileo Damansara|200,337
-KG12|Bukit Kiara Selatan|217,347
+KG12|Bukit Kiara Selatan|217,347|planned
 KG13|Pusat Bandar Damansara|249,347
 KG14|Semantan|269,347
 KG15|Muzium Negara|294,347
@@ -341,6 +342,8 @@ CC32|Universiti|249,372
 CC33|UM|230,358
 CC1|Bukit Kiara Selatan|217,347
 `,'planned');
+for(const station of stationsById.values())if(referencePoints[station.id])Object.assign(station,referencePoints[station.id]);
+for(const line of lines)line.color=referenceColors[line.id]||line.color;
 export const stations=[...stationsById.values()];
 export const stationById=Object.fromEntries(stations.map(s=>[s.id,s]));
 export const lineById=Object.fromEntries(lines.map(l=>[l.id,l]));

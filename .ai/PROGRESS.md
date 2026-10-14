@@ -2,16 +2,26 @@
 
 ## Implemented
 
-- New static PWA with 219 available stations across 12 operating lines.
+- New static PWA with 218 available stations across 12 operating lines.
 - Service-aware routing, transfer-first option, optional separately ticketed airport trains and explicit walking connections.
 - Responsive planner, interactive SVG map, optional 3D tilt, automatic animated train preview, saved and shareable journeys.
 - Offline app cache, installation assets, reduced-motion and keyboard interaction support.
 - Network source documentation, availability snapshot and exclusions.
 
+## Latest upgrade
+
+- Page zoom blocked by viewport, touch-action and gesture guards; SVG map zoom remains enabled.
+- Dark map styling, exact reference palette, extracted curved rail shapes and improved station positions.
+- Curved route highlighting and playback on the rail shapes.
+- Parking layers and explorer: 116 station records, with 31 operator-supported records and source/unknown distinctions.
+- 44 individually sourced MRT facility profiles and separate Facilities / Parking / Connections tabs.
+- Parking choices along the departure line can become journey starting stations.
+- Corrected planned KG12 Bukit Kiara Selatan and the unavailable Maluri at-grade car park.
+
 ## Verified
 
 - JavaScript syntax checks and static build.
-- 17 automated checks for known journeys, directions, transfer counts, exclusions, connectivity to every available station, manifest/icon validity and offline navigation fallback.
+- 27 automated checks for known journeys, directions, transfer counts, exclusions, connectivity to every available station, manifest/icon validity and offline navigation fallback.
 
 ## Verification limit
 

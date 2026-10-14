@@ -4,7 +4,7 @@ Snapshot: **14 October 2026**, Malaysia time.
 
 ## Layout reference
 
-User-supplied **Klang Valley Transit System Map by ziqtofu.pdf**, designed by **@ziqtofu**, PDF metadata dated 13 October 2026. The station sequences and line identity were transcribed; the application uses a new schematic SVG with simplified coordinates. The original PDF is not included in this public repository. Credit is visible in the app and its information dialog.
+User-supplied **Klang Valley Transit System Map by ziqtofu.pdf**, designed by **@ziqtofu**, PDF metadata dated 13 October 2026. The station sequences and line identity were transcribed; the application uses an interactive schematic SVG with extracted centreline curves, sRGB line colours and marker positions. The original PDF is not included in this public repository. Credit is visible in the app and its information dialog.
 
 ## Availability references
 
@@ -33,3 +33,18 @@ Operator starting points: https://myrapid.com.my/ · https://www.ktmb.com.my/ ·
 ## Maintenance
 
 Recheck operator sources before changing service availability. Add a targeted route test for each new interchange or operating station. Do not enable MRT3, Skypark or planned stations merely because they appear on a map. Temporary disruptions, maintenance closures and changes after the snapshot are not ingested automatically.
+
+
+## Parking and facilities upgrade
+
+- Facilities are station-specific records from 44 successfully read MRT Corp station pages, under `https://www.mymrt.com.my/projects/putrajaya-line/stations/` and `https://www.mymrt.com.my/projects/kajang-line/stations/`. Each profile carries its exact source URL and check date. Unread station facilities remain unknown, including many LRT/KTM stations.
+- Parking marks were extracted from the PDF's blue symbols and reviewed against labels. There are 116 parking records for available stations after adding operator-supported facilities absent from the map. A map mark alone does not prove a dedicated, operating Park & Ride.
+- 31 records have operator evidence from a station-specific facilities page, dedicated Park & Ride page, or named Rapid KL facility notice. Older Rapid KL notices confirm the facility but their historic prices are not reused as current prices. The UI discloses this limitation.
+- Bay counts refer to total capacity, not live spaces. Rates are recorded only from individual MRT Corp parking pages. Owner-managed stations use “charges set by parking owner”. Eligible MRT-user rates have same-card and return-trip conditions. Snapshot prices may change.
+- The Maluri at-grade parking page says “Not Operational / No Parking Fees Collection”. It is labelled unavailable and excluded from parking alternatives: https://www.mymrt.com.my/projects/travel-with-mrt/park-n-ride/maluri-at-grade/ . This does not assert that all nearby Maluri parking is closed.
+- Rapid KL's Park & Ride page supplied Gombak/Ampang capacities via indexed official results; the page blocked full retrieval. No current price was inferred: https://myrapid.com.my/bus-train/rapid-kl/park-ride/ .
+- PDF orange bus-terminal marks are represented for Gombak, KL Sentral, Pasar Seni, Titiwangsa, Bandar Tasik Selatan and Putrajaya Sentral. Airport terminal marks are represented separately. An airport terminal does not imply its suspended rail service is available.
+- Map-based stations and route coordinates are schematic, never latitude/longitude. External parking links use a named station search and do not pretend to target a surveyed car-park entrance.
+- MRT Corp's operating Kajang station list omits the reserved Bukit Kiara Selatan station. KG12 is now planned and excluded from routing; Phileo Damansara connects directly to Pusat Bandar Damansara. Current available-station count is 218.
+
+Detailed parking sources are stored with each record in `src/parking-data.js`, including Kwasa Sentral, Bandar Utama, Pusat Bandar Damansara, Kajang, Sri Damansara Barat, Jinjang, Serdang Raya Utara, Taman Naga Emas, Taman Equine, UPM and Bukit Dukung. General MRT parking information: https://www.mymrt.com.my/projects/travel-with-mrt/park-n-ride/ .
