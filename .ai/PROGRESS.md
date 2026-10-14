@@ -17,6 +17,12 @@
 
 No supported browser-control capability was available in this build session. Responsive styles and touch handlers are implemented, but real browser/device appearance, gesture behavior and installation were not tested. Check Safari on iPhone and Chrome on Android before describing those as verified.
 
+## Delivery
+
+- Source pushed to `amnansyahmi/KVRailway`, branch `main`, using the connected GitHub API.
+- Private app preview published successfully: https://kvrailway.arautroopers.chatgpt.site
+- Vercel-ready static build configuration is included; no Vercel deployment was created in this session.
+
 ## Next worthwhile work
 
 - Operator timetable/headway integration and actual fare data, if an authorised source becomes available.
