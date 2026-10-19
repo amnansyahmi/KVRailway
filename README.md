@@ -4,6 +4,10 @@ An independent, installable Klang Valley journey planner and Malaysia rail corri
 
 ## Features
 
+- Apple-inspired interface with system typography, blue actions, grouped station fields, segmented network/service controls, and clear journey summaries.
+- Desktop navigation and a safe-area-aware floating mobile tab bar; opaque content cards with translucency limited to navigation/map controls.
+- Larger interactive targets, visible keyboard focus, reduced transparency and increased contrast support, with solid fallbacks when backdrop blur is unavailable.
+
 - Search 218 available stations by name or station code.
 - Estimated-fastest or fewer-transfer routing across 12 available lines.
 - Clear boarding instructions, train directions, stops and explicit walking links.
@@ -70,11 +74,17 @@ The bundled map uses Natural Earth public-domain country outlines. To regenerate
 | `src/national-router.js` | Separate corridor exploration, explicit planned previews and animation geometry |
 | `src/national-app.js` | National UI, map gestures, station sheets, saving and sharing |
 | `public/maps/malaysia.svg` | Bundled Natural Earth 50m Malaysia basemap |
-| `src/style.css` | Responsive desktop/mobile design, CSS 3D view and reduced motion |
+| `src/style.css` | Base layout, map rendering, CSS 3D view and reduced motion |
+| `src/apple-ui.css` | Apple-inspired visual tokens, responsive controls, navigation, sheets and accessibility preferences |
 | `public/sw.js` | Versioned offline shell cache; populated during build |
 | `scripts/build.mjs` | Deterministic static build and cache-version hash |
 | `tests/` | Routing, graph continuity, offline navigation and install assets |
 
 ## Validation
 
-41 automated checks cover known journeys, reverse direction, planned/suspended exclusions, airport preferences, interchange walks, transfer minimisation, connectivity to every available station and offline navigation, plus national branch continuity, all endpoint combinations, southern ETS stations, ECRL phase/exclusion behavior and offline map caching. Interactive browser/device QA was not available in the build environment; physical iPhone/Android install and touch behavior still need checking.
+41 automated checks cover known journeys, reverse direction, planned/suspended exclusions, airport preferences, interchange walks, transfer minimisation, connectivity to every available station and offline navigation, plus national branch continuity, all endpoint combinations, southern ETS stations, ECRL phase/exclusion behavior and offline map caching. Headless Chromium checks passed for city and national views at 320, 390, 768, 1024 and 1440px: no horizontal overflow, keyboard station selection, mobile route submission to Network, city/national saves, desktop Saved navigation, parking search, map zoom, deliberate 3D with Reduce Motion, and offline reload with the new stylesheet. No JavaScript errors or failed HTTP responses were observed. These are browser checks; physical iPhone/Android installation, real touch gestures and Safari rendering still need checking.
+
+
+## UI design reference
+
+The named `apple-design` skill was unavailable in this session. The interface instead draws on Apple's official [Materials](https://developer.apple.com/design/human-interface-guidelines/materials), [Layout](https://developer.apple.com/design/human-interface-guidelines/layout), and [Typography](https://developer.apple.com/design/human-interface-guidelines/typography) guidance. This is an Apple-inspired web implementation, not a native Liquid Glass component. No framework, font download, or runtime package was added.
